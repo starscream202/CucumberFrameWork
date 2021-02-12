@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class EmployeeList extends CommonMethods{
     @FindBy(id="empsearch_id")
     public WebElement searchId;
@@ -24,6 +26,9 @@ public class EmployeeList extends CommonMethods{
 
     @FindBy(id = "dialogDeleteBtn")
     public WebElement dialogDeleteBtn;
+
+    @FindBy(xpath = "//select[@id='empsearch_job_title']")
+    public WebElement jobTitleDD;
 
     public void waitForDelete(){
         waitForClickability(deleteButton);

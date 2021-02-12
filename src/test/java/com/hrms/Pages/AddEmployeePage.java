@@ -45,6 +45,11 @@ public class AddEmployeePage extends CommonMethods{
     public void enterId(String ID){
         sendText(empIDTextbox,ID);
     }
+    public String getId(){
+        String id= addEmpPage.empIDTextbox.getText();
+        return id;
+    }
+
 
     public AddEmployeePage(){
         PageFactory.initElements(CommonMethods.driver,this);

@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -225,7 +226,18 @@ public class CommonMethods extends PageInitializer {
             }
         }
     }
-
+    /**
+     *
+     */
+    public static List<String> getDDValuesAndStoreInList(WebElement DD, String firstOption){
+        Select select = new Select(DD);
+        List<WebElement> DDoptions= select.getOptions();
+        List<String> DDValues= new LinkedList<>();
+        for (int i=1; i<DDoptions.size(); i++){
+            DDValues.add(DDoptions.get(i).getText());
+        }
+        return DDValues;
+    }
 
 
 }

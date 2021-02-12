@@ -16,6 +16,7 @@ public class PersonalDetailsPage {
 
 
 
+
     public PersonalDetailsPage(){
         PageFactory.initElements(CommonMethods.driver,this);
     }

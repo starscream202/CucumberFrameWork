@@ -2,11 +2,8 @@ package com.hrms.StepDefinitions;
 
 import com.google.common.collect.Maps;
 import com.hrms.Pages.LoginPage;
-import com.hrms.Utils.CommonMethods;
-import com.hrms.Utils.ConfigReader;
+import com.hrms.Utils.*;
 
-import com.hrms.Utils.Constants;
-import com.hrms.Utils.ExcelReading;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -31,9 +28,9 @@ public class AddEmployeeStepDefinition extends CommonMethods {
 
     @When("Add employee without login details")
     public void add_employee_without_login_details() {
-        sendText(addEmpPage.firstNameTextBox, "Ronald");
-        sendText(addEmpPage.middleNameTextbox, "Jefferson");
-        sendText(addEmpPage.lastNameTextbox, "McDonald");
+        sendText(addEmpPage.firstNameTextBox, "Madara");
+        sendText(addEmpPage.middleNameTextbox, "9Tails");
+        sendText(addEmpPage.lastNameTextbox, "Uchiha");
         click(addEmpPage.saveButton);
     }
 
@@ -104,6 +101,19 @@ public class AddEmployeeStepDefinition extends CommonMethods {
         sendText(addEmpPage.lastNameTextbox, lastname);
         click(addEmpPage.saveButton);
     }
+    @When("capture id")
+    public void capture_id() {
+        GlobalVariables.emp_Id = pdPage.personalID.getAttribute("value");
+    }
+    @Then("verify data from db is")
+    public void verify_data_from_db_is() {//verify data is matched
+        String empDataEntered="Madara 9Tails Uchiha";
+        System.out.println(empDataEntered);
+        System.out.println(GlobalVariables.dblist);
+    }
+
+
+
 
 
 
