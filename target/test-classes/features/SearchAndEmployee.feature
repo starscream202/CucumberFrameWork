@@ -10,4 +10,4 @@
       Scenario: search employee job titles
         When search for job_titles
         Then all job title from db is displayed
-        #And  verify data is matched
+        And  verify data is matched

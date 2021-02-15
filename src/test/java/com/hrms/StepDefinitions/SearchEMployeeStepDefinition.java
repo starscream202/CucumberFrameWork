@@ -17,7 +17,7 @@ public class SearchEMployeeStepDefinition extends CommonMethods {
     @When("search for job_titles")
     public void search_for_job_titles() {
        List<String> DDelements=getDDValuesAndStoreInList(empList.jobTitleDD,"LOL");
-        System.out.println(DDelements);
+
 
     }
 

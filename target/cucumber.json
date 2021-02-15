@@ -45,7 +45,7 @@
         ]
       },
       {
-        "start_timestamp": "2021-02-12T17:48:28.037Z",
+        "start_timestamp": "2021-02-13T05:31:57.123Z",
         "before": [
           {
             "result": {
@@ -86,12 +86,23 @@
           },
           {
             "result": {
-              "status": "undefined"
+              "status": "skipped"
             },
             "line": 12,
             "name": "all job title from db is displayed",
-            "match": {},
+            "match": {
+              "location": "com.hrms.StepDefinitions.DatabaseSteps.all_job_title_from_db_is_displayed()"
+            },
             "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 13,
+            "name": "verify data is matched",
+            "match": {},
+            "keyword": "And "
           }
         ],
         "tags": [

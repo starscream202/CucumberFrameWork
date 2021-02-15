@@ -71,6 +71,16 @@ formatter.step({
   "name": "all job title from db is displayed",
   "keyword": "Then "
 });
+formatter.match({
+  "location": "com.hrms.StepDefinitions.DatabaseSteps.all_job_title_from_db_is_displayed()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "verify data is matched",
+  "keyword": "And "
+});
 formatter.match({});
 formatter.result({
   "status": "undefined"

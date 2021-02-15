@@ -1,11 +1,10 @@
 package com.hrms.Utils;
 
+import org.openqa.selenium.support.PageFactory;
+
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class db_Utils {
     private static Connection conn;
@@ -76,4 +75,21 @@ public class db_Utils {
             e.printStackTrace();
         }
     }
+    public static List<String> getDBDataIntoListofString(String query){
+        List<String> dbList=new ArrayList<>();
+        try{
+            ResultSetMetaData resultSetMetaData= getResultSet(query).getMetaData();
+            while(resultSet.next()){
+                for(int row=1; row<=resultSetMetaData.getColumnCount();row++){
+                    String data= resultSet.getString(row);
+                    dbList.add(data);
+                }
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }return dbList;
+    }
 }
+
