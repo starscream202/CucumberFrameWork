@@ -6,6 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import net.minidev.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.json.Json;
@@ -48,14 +49,17 @@ public class hardCodedExamples {
         System.out.println(id);
         createEmployeeResponse.then().assertThat().body("Message",equalTo("Entry Created"));
     }
-    /*@Test
+    @Test
     public void aPutUpdateEmployee(){
         String uri=GlobalVariables.baseURI;
-        RequestSpecification updateEmployeeRequest=given().header("Authorization",GlobalVariables.token).header("Content_Type","Application/json").body();
+        JSONObject requestParams = new JSONObject();
+        requestParams.put("employee_id", "20001.0"); // Cast
+        requestParams.put("emp_gender", "M");
+        RequestSpecification updateEmployeeRequest=given().header("Authorization",GlobalVariables.token).header("Content_Type","Application/json").body(requestParams.toJSONString());
 
         Response updateEmployeeResponse=updateEmployeeRequest.when().put("/updatePartialEmplyeesDetails.php");
         updateEmployeeResponse.prettyPrint();
-    }*/
+    }
     @Test
     public void getCreatedEmployee(){
         //created string for base URI
