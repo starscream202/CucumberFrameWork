@@ -11,115 +11,200 @@
         "steps": [
           {
             "result": {
-              "status": "skipped"
+              "duration": 1832000000,
+              "status": "passed"
             },
             "line": 6,
-            "name": "enter valid credentials",
+            "name": "JWT is generated",
             "match": {
-              "location": "com.hrms.StepDefinitions.LoginStepDefinition.enter_valid_credentials()"
+              "location": "com.hrms.api.generateTokenSteps.jwt_is_generated()"
             },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "line": 7,
-            "name": "click on login button",
-            "match": {
-              "location": "com.hrms.StepDefinitions.LoginStepDefinition.click_on_login_button()"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "line": 8,
-            "name": "go to Add Employee page",
-            "match": {
-              "location": "com.hrms.StepDefinitions.SearchEMployeeStepDefinition.go_to_Add_Employee_page()"
-            },
-            "keyword": "Then "
+            "keyword": "Given "
           }
         ]
       },
       {
-        "start_timestamp": "2021-02-13T05:31:57.123Z",
-        "before": [
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "match": {
-              "location": "com.hrms.StepDefinitions.Hooks.startTest()"
-            }
-          }
-        ],
-        "line": 10,
-        "name": "search employee job titles",
+        "start_timestamp": "2021-02-27T19:10:34.182Z",
+        "line": 8,
+        "name": "API",
         "description": "",
-        "id": "search-an-employee;search-employee-job-titles",
-        "after": [
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "match": {
-              "location": "com.hrms.StepDefinitions.Hooks.endTest(io.cucumber.java.Scenario)"
-            }
-          }
-        ],
+        "id": "syntax-hrms-apiworkflow;api",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "status": "skipped"
+              "duration": 25000000,
+              "status": "passed"
             },
-            "line": 11,
-            "name": "search for job_titles",
+            "line": 9,
+            "name": "get POST call to create employee",
             "match": {
-              "location": "com.hrms.StepDefinitions.SearchEMployeeStepDefinition.search_for_job_titles()"
+              "location": "com.hrms.api.apiTestingFinalSteps.get_POST_call_to_create_employee()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 157000000,
+              "status": "passed"
             },
-            "line": 12,
-            "name": "all job title from db is displayed",
+            "line": 10,
+            "name": "the status code for creating employee is 201",
             "match": {
-              "location": "com.hrms.StepDefinitions.DatabaseSteps.all_job_title_from_db_is_displayed()"
+              "arguments": [
+                {
+                  "val": "201",
+                  "offset": 41
+                }
+              ],
+              "location": "com.hrms.api.apiTestingFinalSteps.the_status_code_for_creating_employee_is(java.lang.Integer)"
             },
             "keyword": "Then "
           },
           {
             "result": {
-              "status": "undefined"
+              "duration": 63000000,
+              "status": "passed"
             },
-            "line": 13,
-            "name": "verify data is matched",
-            "match": {},
+            "line": 11,
+            "name": "the employee is created",
+            "match": {
+              "location": "com.hrms.api.apiTestingFinalSteps.the_employee_is_created()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 43000000,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "Store employee ID",
+            "match": {
+              "location": "com.hrms.api.apiTestingFinalSteps.store_employee_ID()"
+            },
             "keyword": "And "
           }
         ],
         "tags": [
           {
-            "name": "@searchEmployee"
+            "name": "@apiWorkflow"
+          }
+        ]
+      },
+      {
+        "line": 5,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 121000000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "JWT is generated",
+            "match": {
+              "location": "com.hrms.api.generateTokenSteps.jwt_is_generated()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-02-27T19:10:36.361Z",
+        "line": 14,
+        "name": "retrieving the created employee",
+        "description": "",
+        "id": "syntax-hrms-apiworkflow;retrieving-the-created-employee",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7000000,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "request is prepared to retrieve created employee",
+            "match": {
+              "location": "com.hrms.api.apiTestingFinalSteps.request_is_prepared_to_retrieve_created_employee()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 137000000,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "a get call is made",
+            "match": {
+              "location": "com.hrms.api.apiTestingFinalSteps.a_get_call_is_made()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "Status code for retrieving created employee is 200",
+            "match": {
+              "arguments": [
+                {
+                  "val": "200",
+                  "offset": 47
+                }
+              ],
+              "location": "com.hrms.api.apiTestingFinalSteps.status_code_for_retrieving_created_employee_is(java.lang.Integer)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 9000000,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "the retrieved EmployeeID matches the globally stored EmployeeID",
+            "match": {
+              "location": "com.hrms.api.apiTestingFinalSteps.the_retrieved_EmployeeID_matches_the_globally_stored_EmployeeID()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10000000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "the retrieved data matched the data used to create the employee",
+            "match": {
+              "location": "com.hrms.api.apiTestingFinalSteps.the_retrieved_data_matched_the_data_used_to_create_the_employee()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@apiWorkflow"
           }
         ]
       }
     ],
-    "name": "Search an Employee",
+    "name": "Syntax hrms apiWorkflow",
     "description": "",
-    "id": "search-an-employee",
+    "id": "syntax-hrms-apiworkflow",
     "keyword": "Feature",
-    "uri": "file:src/test/resources/features/SearchAndEmployee.feature",
+    "uri": "file:src/test/resources/features/apiWorkflow.feature",
     "tags": [
       {
-        "name": "@searchEmployee",
+        "name": "@apiWorkflow",
         "type": "Tag",
         "location": {
           "line": 2,

@@ -1,20 +1,20 @@
-package com.hrms.apiTesting;
+package com.hrms.api;
 
 import com.hrms.Utils.GlobalVariables;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.json.Json;
+
 import static org.hamcrest.CoreMatchers.*;
 
 import static io.restassured.RestAssured.*;
 
 public class hardCodedExamples {
+    public static String URI=GlobalVariables.baseURI;
     @Test
     public void sampleTest(){
         RestAssured.baseURI="http://3.237.189.167/syntaxapi/api";
@@ -53,8 +53,9 @@ public class hardCodedExamples {
     public void aPutUpdateEmployee(){
         String uri=GlobalVariables.baseURI;
         JSONObject requestParams = new JSONObject();
-        requestParams.put("employee_id", "20001.0"); // Cast
-        requestParams.put("emp_gender", "M");
+        requestParams.put("employee_id", "13927"); // Cast
+        requestParams.put("emp_middle_name", "NineTailedFox");
+        requestParams.put("emp_gender","M");
         RequestSpecification updateEmployeeRequest=given().header("Authorization",GlobalVariables.token).header("Content_Type","Application/json").body(requestParams.toJSONString());
 
         Response updateEmployeeResponse=updateEmployeeRequest.when().put("/updatePartialEmplyeesDetails.php");
@@ -65,16 +66,27 @@ public class hardCodedExamples {
         //created string for base URI
         String uri=GlobalVariables.baseURI;
        //creating request
-        RequestSpecification getCreatedEmployeeRequest= given().header("Authorization", GlobalVariables.token).header("Content-Type","Application/json").queryParam("employee_id","15916A");
+        RequestSpecification getCreatedEmployeeRequest= given().header("Authorization", GlobalVariables.token).header("Content-Type","Application/json").queryParam("employee_id","13933");
        //creating response
         Response getCreatedEmployeeResponse=getCreatedEmployeeRequest.when().get("/getOneEmployee.php");
        //asserting using then()
-        getCreatedEmployeeResponse.then().assertThat().body("employee[0].emp_firstname",equalTo("Nagato"));
+        getCreatedEmployeeResponse.then().assertThat().body("employee[0].emp_firstname",equalTo("Madara"));
        getCreatedEmployeeResponse.prettyPrint();
        String id =getCreatedEmployeeResponse.body().jsonPath().getString("employee[0].employee_id");
        //asserting with boolean
-       boolean verifyingID=id.equalsIgnoreCase("15916A");
+       boolean verifyingID=id.equalsIgnoreCase("13933");
         Assert.assertTrue(verifyingID);
+    }
+
+    @Test
+    public void getAllEmployees(){//playing around
+
+        RequestSpecification getAllEmployeesRequest= given().header("Authorization",GlobalVariables.token).header("Content-Type","Application/json");
+        Response getAllEmployeesResponse=getAllEmployeesRequest.when().get("/getAllEmployees.php");
+        int intStatusCode=getAllEmployeesResponse.statusCode();
+        getAllEmployeesResponse.then().assertThat().statusCode(200).equals(intStatusCode);
+        getAllEmployeesResponse.prettyPrint();
+
     }
 }
 
