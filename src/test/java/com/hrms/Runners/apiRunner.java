@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         glue= "com/hrms/api", //link step definitions
         dryRun = false, //dry run will not run but check if u have unimplemented steps
         tags= "@apiWorkflow", //can run tags need {} for multiple tags
-        strict = false, //strict if there is an unimplemented step it will fail
+        strict =false, //strict if there is an unimplemented step it will fail
         plugin = {"pretty", //this will print out steps in console
                 "html:target/cucumber-default-reports", //genereates report in target folder
                 "rerun:target/FailedTests.txt", //if tests fail it will go into text file in target folder
