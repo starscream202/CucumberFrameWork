@@ -1,5 +1,6 @@
 package com.hrms.api;
 
+import com.hrms.TestBase.BaseClass;
 import com.hrms.Utils.GlobalVariables;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;

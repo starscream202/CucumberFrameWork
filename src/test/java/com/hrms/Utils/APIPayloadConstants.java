@@ -36,5 +36,18 @@ public class APIPayloadConstants {
         obj.put("emp_lastname","Uchiha");
         return  obj.toString();
      }
+     public static String update_Employee(){
+         JSONObject obj=new JSONObject();
+         obj.put("employee_id", apiTestingFinalSteps.id);
+         obj.put("emp_firstname","Sarada");
+         obj.put("emp_middle_name","Boruto");
+         obj.put("emp_lastname","Uchiha");
+         obj.put("emp_gender","F");
+         obj.put("emp_birthday","1987-02-21");
+         obj.put("emp_status","Employee");
+         obj.put("emp_job_title","Hokage");
+
+         return  obj.toString();
+     }
 
 }

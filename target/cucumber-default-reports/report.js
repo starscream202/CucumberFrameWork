@@ -25,7 +25,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "",
+  "name": "Create Employee",
   "description": "",
   "keyword": "Scenario",
   "tags": [
@@ -165,7 +165,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Update created employee",
+  "name": "Update created employee (patch)",
   "description": "",
   "keyword": "Scenario",
   "tags": [
@@ -250,7 +250,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "retrieving the created employee",
+  "name": "Update created employee (put)",
   "description": "",
   "keyword": "Scenario",
   "tags": [
@@ -260,51 +260,41 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "request is prepared to retrieve created employee",
+  "name": "request to update employee 2",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.api.apiTestingFinalSteps.request_to_update_employee(java.lang.Integer)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a put call is made to update Employee",
   "keyword": "When "
 });
 formatter.match({
-  "location": "com.hrms.api.apiTestingFinalSteps.request_is_prepared_to_retrieve_created_employee()"
+  "location": "com.hrms.api.apiTestingFinalSteps.a_put_call_is_made_to_update_Employee()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a get call is made",
+  "name": "status code is 201",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.api.apiTestingFinalSteps.a_get_call_is_made()"
+  "location": "com.hrms.api.apiTestingFinalSteps.status_code_is(java.lang.Integer)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Status code for retrieving created employee is 200",
+  "name": "assert that response has \"Message\" and \"Entry updated\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.api.apiTestingFinalSteps.status_code_for_retrieving_created_employee_is(java.lang.Integer)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the retrieved EmployeeID matches the globally stored EmployeeID",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.api.apiTestingFinalSteps.the_retrieved_EmployeeID_matches_the_globally_stored_EmployeeID()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the retrieved data matched the data used to create the employee",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.api.apiTestingFinalSteps.the_retrieved_data_matched_the_data_used_to_create_the_employee()"
+  "location": "com.hrms.api.apiTestingFinalSteps.assert_that_response_has_and(java.lang.String,java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -445,6 +435,71 @@ formatter.step({
 });
 formatter.match({
   "location": "com.hrms.api.apiTestingFinalSteps.employees_are_successfully_retrieved_with_and(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "JWT is generated",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.api.generateTokenSteps.jwt_is_generated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "get all job titles",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@apiWorkflow"
+    }
+  ]
+});
+formatter.step({
+  "name": "request is made to get all job titles",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.api.apiTestingFinalSteps.request_is_made_to_get_all_job_titles()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "get call is made to get all job titles",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.api.apiTestingFinalSteps.get_call_is_made_to_get_all_job_titles()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "assert that status code is 200",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.api.apiTestingFinalSteps.assert_that_status_code_is(java.lang.Integer)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "response has \"Job Title List\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.api.apiTestingFinalSteps.response_has(java.lang.String)"
 });
 formatter.result({
   "status": "passed"

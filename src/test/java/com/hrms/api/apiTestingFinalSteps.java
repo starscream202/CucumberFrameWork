@@ -82,7 +82,7 @@ public  class apiTestingFinalSteps {
 
     @When("a put call is made to update employee")
     public void a_put_call_is_made_to_update_employee() {
-        response=request.when().put(APIConstants.PARTIAL_UPDATE_EMPLOYEE);
+        response=request.when().patch(APIConstants.PARTIAL_UPDATE_EMPLOYEE);
         System.out.println(response.prettyPrint());
     }
 
@@ -141,10 +141,52 @@ public  class apiTestingFinalSteps {
         String payload=response.asString();
         JsonPath js= new JsonPath(payload);
         int count = js.getInt("Employees.size()");
-        for (int i=0; i<count;i++){
+       /* for (int i=0; i<count;i++){
             String allEmployeesID= js.getString("Employees["+i+"].employee_id");
             System.out.println(allEmployeesID);
-        }
+        }*/
     }
+
+    //test 7
+    @Given("request is made to get all job titles")
+    public void request_is_made_to_get_all_job_titles() {
+        request=given().header(APIConstants.AUTHORIZATION,generateTokenSteps.token)
+                .header(APIConstants.CONTENT_TYPE,APIConstants.Application_JSON).log().all();
+    }
+
+    @When("get call is made to get all job titles")
+    public void get_call_is_made_to_get_all_job_titles() {
+        response=request.when().get(APIConstants.JOB_TITLE);
+    }
+
+    @Then("assert that status code is {int}")
+    public void assert_that_status_code_is(Integer expected) {
+        response.then().statusCode(expected);
+    }
+
+    @Then("response has {string}")
+    public void response_has(String List) {
+        response.prettyPrint();
+        response.then().assertThat().body(containsString(List));
+    }
+
+    //update employee api test
+    @Given("request to update employee {int}")
+    public void request_to_update_employee(Integer int1) {
+        request=given().header(APIConstants.CONTENT_TYPE,APIConstants.Application_JSON)
+                .header(APIConstants.AUTHORIZATION,generateTokenSteps.token)
+                .body(APIPayloadConstants.update_Employee()).log().all();
+    }
+    @When("a put call is made to update Employee")
+    public void a_put_call_is_made_to_update_Employee() {
+        response=request.when().put(APIConstants.UPDATE_EMPLOYEE);
+    }
+
+    @Then("assert that response has {string} and {string}")
+    public void assert_that_response_has_and(String Message, String expected) {
+        response.then().assertThat().body(Message,equalTo(expected));
+    }
+
+
 
 }
