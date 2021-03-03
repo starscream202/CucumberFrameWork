@@ -1,6 +1,12 @@
 package com.hrms.api;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.hrms.TestBase.BaseClass;
+import com.hrms.Utils.APIConstants;
+import com.hrms.Utils.APIPayloadConstants;
 import com.hrms.Utils.GlobalVariables;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
@@ -9,6 +15,10 @@ import io.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 import static org.hamcrest.CoreMatchers.*;
 
@@ -88,6 +98,81 @@ public class hardCodedExamples {
         getAllEmployeesResponse.then().assertThat().statusCode(200).equals(intStatusCode);
         getAllEmployeesResponse.prettyPrint();
 
+    }
+
+    @Test
+    public void getAllStatus(){
+
+        RequestSpecification getAllStatusRequest= given().header(APIConstants.AUTHORIZATION,GlobalVariables.token)
+                .header(APIConstants.CONTENT_TYPE,APIConstants.Application_JSON)
+                .log().all();
+
+        Response response=getAllStatusRequest.when().get(APIConstants.EMPLOYEE_STATUS);
+
+        response.prettyPrint();
+    }
+    @Test
+    public void testingFileParse2() throws FileNotFoundException {
+        File input=new File("C:\\Users\\stars\\eclipse-workspace\\MyFirstJava\\src\\com\\CucumberFramework\\src\\test\\resources\\features\\JsonData\\anotherJson.json");
+        try{
+            JsonElement fileElement= JsonParser.parseReader(new FileReader(input));
+            JsonObject createUserData=fileElement.getAsJsonObject();
+            JsonElement element=createUserData.get("Team 7");
+            JsonArray array=element.getAsJsonArray();
+            //as json object
+            System.out.println(createUserData);
+            //as json array
+            System.out.println(array.get(0));
+            System.out.println(array.get(1));
+            System.out.println(array.get(2));
+            //as json element
+            JsonElement element1=array.get(0);
+            System.out.println(element);
+            System.out.println(element1);
+
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @Test
+    public void testingFileParse() throws FileNotFoundException {
+        File input=new File("C:\\Users\\stars\\eclipse-workspace\\MyFirstJava\\src\\com\\CucumberFramework\\src\\test\\resources\\features\\JsonData\\createUser.json");
+        try{
+            JsonElement fileElement= JsonParser.parseReader(new FileReader(input));
+            JsonObject createUserData=fileElement.getAsJsonObject();
+            JsonElement element=createUserData.get("Message");
+            System.out.println(element);
+            String emp_firstname=createUserData.get("emp_firstname").getAsString();
+            JsonElement emp_firstnameAsElement=createUserData.get("emp_lastname");
+            System.out.println("The json data to create user "+"    "+createUserData);
+            System.out.println(fileElement);
+            System.out.println("Employee first name is "+emp_firstnameAsElement);
+            System.out.println("Employee first name is "+emp_firstname);
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    @Test
+    public void parsingTest(){
+        String uri=GlobalVariables.baseURI;
+        RequestSpecification createEmployeRequest=given().header("Authorization", GlobalVariables.token).header("Content-Type","Application/json").body(APIPayloadConstants.createEmployeeAsString());
+
+
+
+        Response createEmployeeResponse= createEmployeRequest.when().post("/createEmployee.php");
+        createEmployeeResponse.prettyPrint();
+        createEmployeeResponse.then().assertThat().statusCode(201);
+        JsonPath r=createEmployeeResponse.jsonPath();
+
+        r.prettyPrint();
+        String id=createEmployeeResponse.jsonPath().getString("Employee[0].employee_id");
+        System.out.println(id);
+        createEmployeeResponse.then().assertThat().body("Message",equalTo("Entry Created"));
     }
 }
 

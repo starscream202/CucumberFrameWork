@@ -1,0 +1,45 @@
+{
+  "Message": "Team 7 Assembled",
+  "Team 7": [
+    {
+      "employee_id": "12903",
+      "emp_firstname": "Konahamaru",
+      "emp_middle_name": "Hiruzen",
+      "emp_lastname": "Saratobi",
+      "emp_birthday": "2000-02-07",
+      "emp_gender": "M",
+      "emp_job_title": "Hokage",
+      "emp_status": "Employee"
+    },
+    {
+      "employee_id": "17480A",
+      "emp_firstname": "Sarada",
+      "emp_middle_name": "Uchiha",
+      "emp_lastname": "Sasuke",
+      "emp_birthday": "2000-02-07",
+      "emp_gender": "F",
+      "emp_job_title": "CEO",
+      "emp_status": "Employee"
+    },
+    {
+      "employee_id": "17485A",
+      "emp_firstname": "Boruto",
+      "emp_middle_name": "Uchiha",
+      "emp_lastname": "Uzamaki",
+      "emp_birthday": "2000-02-07",
+      "emp_gender": "M",
+      "emp_job_title": "CEO",
+      "emp_status": "Employee"
+    },
+    {
+      "employee_id": "17321A",
+      "emp_firstname": "Mitsuki",
+      "emp_middle_name": "Sage",
+      "emp_lastname": "Orochimaru",
+      "emp_birthday": "2000-02-07",
+      "emp_gender": "M",
+      "emp_job_title": "CEO",
+      "emp_status": "Employee"
+    }
+  ]
+}

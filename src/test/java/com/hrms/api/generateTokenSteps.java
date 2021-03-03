@@ -18,4 +18,5 @@ public class generateTokenSteps {
         Response generateTokenResponse = generateTokenRequest.when().post("/generateToken.php");
         generateTokenResponse.prettyPrint();
         token="Bearer "+generateTokenResponse.jsonPath().getString("token");
+        System.out.println(token);
     }}

@@ -10,6 +10,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import java.io.FileNotFoundException;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -172,7 +174,7 @@ public  class apiTestingFinalSteps {
 
     //update employee api test
     @Given("request to update employee {int}")
-    public void request_to_update_employee(Integer int1) {
+    public void request_to_update_employee(Integer int1) throws FileNotFoundException {
         request=given().header(APIConstants.CONTENT_TYPE,APIConstants.Application_JSON)
                 .header(APIConstants.AUTHORIZATION,generateTokenSteps.token)
                 .body(APIPayloadConstants.update_Employee()).log().all();
