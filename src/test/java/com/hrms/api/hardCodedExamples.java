@@ -96,7 +96,19 @@ public class hardCodedExamples {
         Response getAllEmployeesResponse=getAllEmployeesRequest.when().get("/getAllEmployees.php");
         int intStatusCode=getAllEmployeesResponse.statusCode();
         getAllEmployeesResponse.then().assertThat().statusCode(200).equals(intStatusCode);
-        getAllEmployeesResponse.prettyPrint();
+        JsonParser parser= new JsonParser();
+        String responseAsString=getAllEmployeesResponse.asString();
+        JsonObject response_getAllEmp= JsonParser.parseString(responseAsString).getAsJsonObject();
+        JsonArray array_GetAllEmp= response_getAllEmp.get("Employees").getAsJsonArray();
+
+        for(JsonElement x: array_GetAllEmp){
+            JsonObject Employee_Data=x.getAsJsonObject();
+            String emp_Firstname= Employee_Data.get("emp_firstname").getAsString();
+            String emp_ID=Employee_Data.get("employee_id").getAsString();
+            System.out.println(emp_Firstname+" "+emp_ID);
+        }
+
+        //getAllEmployeesResponse.prettyPrint();
 
     }
 
@@ -174,5 +186,6 @@ public class hardCodedExamples {
         System.out.println(id);
         createEmployeeResponse.then().assertThat().body("Message",equalTo("Entry Created"));
     }
+
 }
 
