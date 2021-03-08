@@ -13,7 +13,7 @@ public class Hooks {
     public void startTest(){
         BaseClass.setUp();
     }
-    //@After
+    @After
     public void endTest(Scenario scenario){
         byte[] screenshot;
         if(scenario.isFailed()){

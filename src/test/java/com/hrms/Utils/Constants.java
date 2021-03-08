@@ -4,7 +4,7 @@ import com.hrms.TestBase.BaseClass;
 
 public class Constants {
 
-    public static final String CONFIGURATION_FILEPATH=System.getProperty("user.dir")+"\\src\\test\\resources\\configurations.properties";
+    public static final String CONFIGURATION_FILEPATH=System.getProperty("user.dir")+"/src/test/resources/configurations.properties";
 
     public static final String TESTDATA_FILEPATH="C:\\Users\\stars\\OneDrive\\Documents\\EmployeeData.xlsx";
 
