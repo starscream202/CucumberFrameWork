@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -66,6 +68,11 @@ public class CommonMethods extends PageInitializer {
         getJSExecutor().executeScript("arguments[0].click",element);
         element.click();
     }
+    public static String getTimeStamp(String pattern){
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat(pattern);
+        return sdf.format(date);
+    }
 
     public static byte[] takeScreenshot(String filename){
         TakesScreenshot ts=(TakesScreenshot)driver;
@@ -73,7 +80,7 @@ public class CommonMethods extends PageInitializer {
         File sourceFile = ts.getScreenshotAs(OutputType.FILE);
 
         try{
-            FileUtils.copyFile(sourceFile, new File (Constants.SCREENSHOT_FILEPATH+filename+".png"));
+            FileUtils.copyFile(sourceFile, new File(Constants.SCREENSHOT_FILEPATH + filename + getTimeStamp("yyyy-MM-dd-HH-mm-ss")+".png"));
         }catch(IOException e){
             e.printStackTrace();
         }
