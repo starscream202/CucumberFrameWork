@@ -1,5 +1,8 @@
 package com.hrms.Utils;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.hrms.TestBase.BaseClass;
 import com.hrms.TestBase.PageInitializer;
 import org.apache.commons.io.FileUtils;
@@ -10,6 +13,8 @@ import org.openqa.selenium.support.ui.UnexpectedTagNameException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,7 +43,7 @@ public class CommonMethods extends PageInitializer {
      * @return WebDriverWait
      */
     public static WebDriverWait getWait(){
-        WebDriverWait wait = new WebDriverWait(driver,Constants.EXPLICIT_WAIT_TIME);
+        WebDriverWait wait = new WebDriverWait(BaseClass.driver,Constants.EXPLICIT_WAIT_TIME);
         return wait;
     }
 
@@ -244,6 +249,16 @@ public class CommonMethods extends PageInitializer {
             DDValues.add(DDoptions.get(i).getText());
         }
         return DDValues;
+    }
+    public static String parsingMethod(String path) throws FileNotFoundException {
+        File input= new File(path);
+        JsonElement fileElement= JsonParser.parseReader(new FileReader(input));
+        JsonObject empStatusList = fileElement.getAsJsonObject();
+
+
+
+
+        return empStatusList.toString();
     }
 
 

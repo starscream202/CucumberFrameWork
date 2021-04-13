@@ -37,6 +37,8 @@
 
 
 
+
+
       Scenario: Delete the created employee
         Given request is made to delete employee
         When delete call is made
@@ -55,5 +57,12 @@
             When get call is made to get all job titles
             Then assert that status code is 200
             And response has "Job Title List"
+
+    Scenario: Get all employee status
+      Given request is made to get employee statuses
+      When get call is made to get statuses
+      Then assert that status code is 200
+      And assert the response matches
+
 
 

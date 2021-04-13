@@ -15,6 +15,7 @@ public class APIConstants {
     public static final String CONTENT_TYPE="Content-Type";
     public static final String AUTHORIZATION="Authorization";
     public static final String Application_JSON="Application/json";
+    public static final String path="C:\\Users\\stars\\eclipse-workspace\\MyFirstJava\\src\\com\\CucumberFramework\\src\\test\\resources\\features\\JsonData\\empStatusList.json";
 
 
 

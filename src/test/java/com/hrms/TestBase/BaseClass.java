@@ -1,6 +1,6 @@
 package com.hrms.TestBase;
-
 import com.hrms.Utils.ConfigReader;
+
 import com.hrms.Utils.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

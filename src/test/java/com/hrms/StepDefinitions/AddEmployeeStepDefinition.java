@@ -18,6 +18,7 @@ public class AddEmployeeStepDefinition extends CommonMethods {
     public void login_to_HRMS() {
         LoginPage.login(ConfigReader.getPropertyValue("username"),ConfigReader.getPropertyValue("pass"));
         LoginPage.clickLoginButton();
+
     }
 
     @Then("navigate to Add Employee page")
@@ -28,8 +29,11 @@ public class AddEmployeeStepDefinition extends CommonMethods {
 
     @When("Add employee without login details")
     public void add_employee_without_login_details() {
+        addEmpPage.firstNameTextBox.clear();
         sendText(addEmpPage.firstNameTextBox, "Madara");
+        addEmpPage.middleNameTextbox.clear();
         sendText(addEmpPage.middleNameTextbox, "9Tails");
+        addEmpPage.lastNameTextbox.clear();
         sendText(addEmpPage.lastNameTextbox, "Uchiha");
         click(addEmpPage.saveButton);
     }
@@ -109,7 +113,8 @@ public class AddEmployeeStepDefinition extends CommonMethods {
     public void verify_data_from_db_is() {//verify data is matched
         String empDataEntered="Madara 9Tails Uchiha";
         System.out.println(empDataEntered);
-        System.out.println(GlobalVariables.dblist);
+        System.out.println(GlobalVariables.dblist.toString());
+
     }
 
 

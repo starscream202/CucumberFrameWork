@@ -1,6 +1,7 @@
 package com.hrms.TestBase;
 
 import com.hrms.Pages.*;
+import org.openqa.selenium.WebDriver;
 
 public class PageInitializer extends BaseClass{
 
@@ -21,6 +22,8 @@ public class PageInitializer extends BaseClass{
 
 
 
+
+
     public static void initializePageObjects(){
 
         loginPage=new LoginPage();
@@ -31,6 +34,11 @@ public class PageInitializer extends BaseClass{
         configPage=new ConfigurationPage();
         LLPage=new LeaveListPage();
 
+
+
+    }
+
+    public static void main(String[] args) {
 
     }
 

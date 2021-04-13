@@ -1,7 +1,10 @@
 package com.hrms.api;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.hrms.Utils.APIConstants;
 import com.hrms.Utils.APIPayloadConstants;
+import com.hrms.Utils.CommonMethods;
 import com.hrms.Utils.GlobalVariables;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +12,9 @@ import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.Assert;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 import static io.restassured.RestAssured.given;
@@ -188,6 +193,28 @@ public  class apiTestingFinalSteps {
     public void assert_that_response_has_and(String Message, String expected) {
         response.then().assertThat().body(Message,equalTo(expected));
     }
+
+    //getting employee statuses
+    @Given("request is made to get employee statuses")
+    public void request_is_made_to_get_employee_statuses() {
+        request=given().header(APIConstants.CONTENT_TYPE, APIConstants.Application_JSON)
+                .header(APIConstants.AUTHORIZATION,generateTokenSteps.token)
+                .log().all();
+    }
+
+    @When("get call is made to get statuses")
+    public void get_call_is_made_to_get_statuses() {
+        response=request.when().get(APIConstants.EMPLOYEE_STATUS);
+        response.prettyPrint();
+    }
+    @Then("assert the response matches")
+    public void assert_the_response_matches() {
+        String expected="Employee Status List";
+        response.then().assertThat().body(containsString(expected));
+    }
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 package com.hrms.api;
 
+import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -7,7 +8,9 @@ import com.google.gson.JsonParser;
 import com.hrms.TestBase.BaseClass;
 import com.hrms.Utils.APIConstants;
 import com.hrms.Utils.APIPayloadConstants;
+import com.hrms.Utils.ConfigReader;
 import com.hrms.Utils.GlobalVariables;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -15,11 +18,21 @@ import io.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import static com.hrms.Utils.db_Utils.getConnection;
 import static org.hamcrest.CoreMatchers.*;
 
 import static io.restassured.RestAssured.*;
@@ -186,6 +199,26 @@ public class hardCodedExamples {
         System.out.println(id);
         createEmployeeResponse.then().assertThat().body("Message",equalTo("Entry Created"));
     }
+    @Test
+    public void getLinks(){
+        WebDriverManager.firefoxdriver().setup();;
+        WebDriver driver=new FirefoxDriver();
+        driver.get("https://www.ebay.com");
+
+        List<WebElement>allLinks=driver.findElements(By.tagName("a"));
+        System.out.println(allLinks.size());
+        for(WebElement link:allLinks){
+            String fullLink=link.getAttribute("href");
+            String linkText=link.getText();
+            if(!linkText.isEmpty()) {
+                System.out.println(linkText + " " + fullLink);
+            }else{
+                System.out.println(fullLink);
+            }
+        }
+    }
+
+
 
 }
 
