@@ -19,6 +19,8 @@ public class PageInitializer extends BaseClass{
 
     public static LeaveListPage LLPage;
 
+    public static google googlePage;
+
 
 
 
@@ -33,6 +35,7 @@ public class PageInitializer extends BaseClass{
         pdPage=new PersonalDetailsPage();
         configPage=new ConfigurationPage();
         LLPage=new LeaveListPage();
+        googlePage=new google();
 
 
 

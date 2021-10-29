@@ -23,7 +23,7 @@ public class BaseClass {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions=new ChromeOptions();
-                chromeOptions.setHeadless(true);
+                chromeOptions.setHeadless(false);
 
                 driver = new ChromeDriver(chromeOptions);
                 break;
@@ -34,7 +34,7 @@ public class BaseClass {
             default:
                 throw new RuntimeException("Invalid Browser");
         }
-        driver.get(ConfigReader.getPropertyValue("url").toLowerCase());
+        driver.get(ConfigReader.getPropertyValue("url2").toLowerCase());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT_TIME, TimeUnit.SECONDS);
         PageInitializer.initializePageObjects();

@@ -39,16 +39,17 @@ public  class apiTestingFinalSteps {
     public void the_status_code_for_creating_employee_is(Integer int1) {
         response=request.when().post(APIConstants.CREATE_EMPLOYEE);
         response.then().assertThat().statusCode(201);
+        response.prettyPrint();
     }
 
     @Then("the employee is created")
     public void the_employee_is_created() {
-        response.then().assertThat().body("Message",equalTo("Entry Created"));
+        response.then().assertThat().body("Message",equalTo("Employee Created"));
     }
 
     @Then("Store employee ID")
     public void store_employee_ID() {
-         id=response.jsonPath().getString("Employee[0].employee_id");
+         id=response.jsonPath().getString("Employee.employee_id");
         System.out.println(id);
     }
     //test 2
@@ -148,10 +149,11 @@ public  class apiTestingFinalSteps {
         String payload=response.asString();
         JsonPath js= new JsonPath(payload);
         int count = js.getInt("Employees.size()");
-       /* for (int i=0; i<count;i++){
+        for (int i=0; i<count;i++){
             String allEmployeesID= js.getString("Employees["+i+"].employee_id");
             System.out.println(allEmployeesID);
-        }*/
+        }
+
     }
 
     //test 7

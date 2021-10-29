@@ -6,10 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hrms.TestBase.BaseClass;
-import com.hrms.Utils.APIConstants;
-import com.hrms.Utils.APIPayloadConstants;
-import com.hrms.Utils.ConfigReader;
-import com.hrms.Utils.GlobalVariables;
+import com.hrms.Utils.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
@@ -216,6 +213,26 @@ public class hardCodedExamples {
                 System.out.println(fullLink);
             }
         }
+    }
+    @Test
+    public void testingmethod() throws FileNotFoundException {
+        System.out.println(CommonMethods.parsingMethod(APIConstants.path));
+    }
+    @Test
+    public void getallemployees2(){
+        RestAssured.baseURI="http://3.237.189.167/syntaxapi/api";
+        String token="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTgzNDQ4OTUsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTYxODM4ODA5NSwidXNlcklkIjoiMjc1OSJ9.XZM4ytpUe8502aHJm4FlH1dFYgn9Yl1uCvPsCWxphMQ";
+        RequestSpecification getallempsrequest=given().header(APIConstants.AUTHORIZATION,token).header(APIConstants.CONTENT_TYPE,APIConstants.Application_JSON);
+        Response getallresponse=getallempsrequest.when().get(APIConstants.GET_ALL_EMPLOYEES);
+        JsonPath js= new JsonPath(getallresponse.toString());
+        int count= js.getInt("Employees.size()");
+        System.out.println(count);
+        /*for (int i=0; i<count; i++){
+            String name=js.getString("Employees["+i+"].emp_firstname");
+            if(name.equals("Madara")){
+                System.out.println("Employee");
+            }
+        }*/
     }
 
 

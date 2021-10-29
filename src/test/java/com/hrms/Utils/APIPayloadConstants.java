@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
 
+import java.awt.image.Kernel;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -45,7 +46,7 @@ public class APIPayloadConstants {
      }
      public static String update_Employee() throws FileNotFoundException {
          JSONObject obj=new JSONObject();
-         obj.put("employee_id", apiTestingFinalSteps.id);
+         obj.put("employee_id", apiTestingFinalSteps.returnID());
          obj.put("emp_firstname","Sarada");
          obj.put("emp_middle_name","Boruto");
          obj.put("emp_lastname","Uchiha");
@@ -70,6 +71,12 @@ public class APIPayloadConstants {
              e.printStackTrace();
          }
             return createUserData.toString();
+     }
+     public static String generateTokenEmailandPass(){
+        JSONObject obj= new JSONObject();
+        obj.put("email","V1talinaFromBelarus");
+        obj.put("password","VitaVita");
+        return obj.toString();
      }
 
 }
